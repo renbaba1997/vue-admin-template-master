@@ -17,7 +17,7 @@ export default {
   mounted() {
     this.init()
   },
-  methods: {
+  methods:  {
     init() {
       const params = {
         name: '小明',
