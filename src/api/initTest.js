@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function testInit(data) {
   return request({
-    url: '/api',
+    url: '/queryStudentInfo',
     method: 'post',
     data
   })
