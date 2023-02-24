@@ -178,7 +178,9 @@ export default {
         studentNo: this.searchForm.studentNo,
         name: this.searchForm.name,
         age: this.searchForm.age,
-        city: this.searchForm.city
+        city: this.searchForm.city,
+        pageIndex: this.pageNum,
+        pageSize: this.pageSize
       }
       testInit(params)
         .then(response => {
