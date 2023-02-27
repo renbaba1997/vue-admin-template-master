@@ -35,8 +35,14 @@
         <el-col :span="2">
           <el-button type="success" icon="el-icon-plus" class="add-tun" style="width: 100px; margin-left: 20px; margin-top: 20px;" @click="dialogVsible = true">新增</el-button>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="2.8">
           <el-button type="danger" icon="el-icon-delete" style="width: 120px; margin-left: 20px; margin-top: 20px;" @click="delayMany()">批量删除</el-button>
+        </el-col>
+        <el-col :span="2">
+          <el-button type="success" icon="el-icon-delete" style="width: 120px; margin-left: 20px; margin-top: 20px;" @click="downTemplate()">模板下载</el-button>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="success" icon="el-icon-delete" style="width: 120px; margin-left: 20px; margin-top: 20px;" @click="downTable()">表格下载</el-button>
         </el-col>
       </el-row>
       <el-row>
@@ -54,7 +60,6 @@
           <el-table-column key="6" label="操作" fixed="right" width="auto" min-width="20%" align="center">
             <template slot-scope="scope">
               <el-button type="danger" @click="deleteRow(scope.row)" size="medium" align="center" style="width: 30%;" icon="el-icon-delete">删除</el-button>
-              <el-button type="warning" @click="editRow(scope.row)" size="medium" align="center" style="width: 30%;" icon="el-icon-edit">修改</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -99,7 +104,7 @@
 </template>
 
 <script>
-import { testInit, addStudentInfo, deleteStudentInfo, deleteStudentInfos } from '@/api/initTest'
+import { testInit, addStudentInfo, deleteStudentInfo, deleteStudentInfos, downloadTemplate, downloadTable } from '@/api/initTest'
 export default {
   data() {
     return {
@@ -130,6 +135,21 @@ export default {
     this.initTableData()
   },
   methods: {
+    downTemplate() {
+      downloadTemplate().then()
+    },
+    downTable() {
+      const tempParams = [...this.multipleSelection]
+      var params1 = []
+      for (var i = 0; i < tempParams.length; i++) {
+        params1.push(tempParams[i].studentNo)
+      }
+      const params = {
+        studentNos: params1
+      }
+      debugger
+      downloadTable(params).then()
+    },
     onInput() {
       this.$forceUpdate()
     },
