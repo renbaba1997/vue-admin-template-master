@@ -25,7 +25,7 @@ service.interceptors.response.use(
     const url = window.URL.createObjectURL(blob)
     const link = document.createElement('a') // 创建a标签
     link.href = url
-    link.download = '学生信息模板.xlsx' // 重命名文件
+    link.download = decodeURIComponent(response.headers["content-disposition"])
     link.click()
     URL.revokeObjectURL(url)
   },

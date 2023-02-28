@@ -33,16 +33,21 @@
     <el-form ref="form">
       <el-row>
         <el-col :span="2">
-          <el-button type="success" icon="el-icon-plus" class="add-tun" style="width: 100px; margin-left: 20px; margin-top: 20px;" @click="dialogVsible = true">新增</el-button>
-        </el-col>
-        <el-col :span="2.8">
-          <el-button type="danger" icon="el-icon-delete" style="width: 120px; margin-left: 20px; margin-top: 20px;" @click="delayMany()">批量删除</el-button>
+          <el-button type="success" icon="el-icon-plus" class="add-tun" style="width: 100px; margin-left: 21px; margin-top: 20px;" @click="dialogVsible = true">新增</el-button>
         </el-col>
         <el-col :span="2">
-          <el-button type="success" icon="el-icon-delete" style="width: 120px; margin-left: 20px; margin-top: 20px;" @click="downTemplate()">模板下载</el-button>
+          <el-button type="danger" icon="el-icon-delete" style="width: 120px; margin-left: 16px; margin-top: 20px;" @click="delayMany()">批量删除</el-button>
         </el-col>
-        <el-col :span="4">
-          <el-button type="success" icon="el-icon-delete" style="width: 120px; margin-left: 20px; margin-top: 20px;" @click="downTable()">表格下载</el-button>
+        <el-col :span="2">
+          <el-button type="success" icon="el-icon-download" style="width: 120px; margin-left: 25px; margin-top: 20px;" @click="downTemplate()">模板下载</el-button>
+        </el-col>
+        <el-col :span="2">
+          <el-button type="success" icon="el-icon-download" style="width: 120px; margin-left: 40px; margin-top: 20px;" @click="downTable()">表格下载</el-button>
+        </el-col>
+        <el-col :span="2">
+          <el-upload class="upload-demo" multiple="" method="post" action="/importTable" style="margin-left: 50px; margin-top: 20px;" accept=".xlsx,.xls" :show-file-list="false" :on-success="success" name="files">
+            <el-button type="success" icon="el-icon-upload">批量导入</el-button>
+          </el-upload>
         </el-col>
       </el-row>
       <el-row>
@@ -147,7 +152,6 @@ export default {
       const params = {
         studentNos: params1
       }
-      debugger
       downloadTable(params).then()
     },
     onInput() {
